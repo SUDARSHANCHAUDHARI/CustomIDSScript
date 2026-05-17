@@ -1,8 +1,21 @@
 # Custom IDS Script
 
-**Goal:** Simple IDS for Linux logs.
+[![Python](https://img.shields.io/badge/Python-3.12-blue)](#) [![Status](https://img.shields.io/badge/status-MVP-green)](#) [![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#)
 
-**MVP:** Watch logs and trigger alerts.
+Simple Linux log IDS that evaluates local rules and emits terminal, Markdown, and JSON alerts.
+
+- **Portfolio group:** Cybersecurity lab project
+- **Status:** MVP implemented, tested, committed, and pushed to GitHub
+- **GitHub:** https://github.com/SUDARSHANCHAUDHARI/CustomIDSScript
+- **Local path:** `/Users/screencloudsudarshan/SUDARSHAN_CODE/sudarshan_repos/CyberSecurity/CustomIDSScript`
+
+## MVP Snapshot
+
+This repository includes a working MVP with safe sample data, deterministic detection or analysis logic, local tests, and generated output reports where relevant. It is ready for README/demo polish or deeper product work.
+
+## Safe Use
+
+This project is defensive and analysis-focused. Use only with logs, systems, repositories, and lab environments you own or have permission to assess.
 
 ## Core Features
 
@@ -28,17 +41,10 @@ The sample data is safe synthetic Linux activity.
 - Detects new local user creation
 - Writes terminal output, Markdown reports, and JSON alerts
 
-## Repository Status
+## Roadmap
 
-This repository contains a working Custom IDS Script MVP with safe sample logs, deterministic rules, generated alerts, and tests.
-
-## Production Foundation
-
-- Private GitHub repository linked to `main`
-- Initial MVP scaffold committed
-- CI repository-health workflow
-- Security policy
-- Contribution guide
-- Pull request and issue templates
-- Production readiness checklist
-- Safe ignore rules for local secrets and generated files
+- Polish sample output screenshots or terminal demos
+- Add architecture diagram and deeper implementation notes
+- Expand test coverage around edge cases
+- Add Docker or local demo workflow where useful
+- Prepare `v0.1.0-mvp` release notes
