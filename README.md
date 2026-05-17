@@ -11,13 +11,26 @@
 - new user detection
 - alert to terminal/Slack
 
-## Status
+## Quick Start
 
-Scaffolded. Implementation pending.
+```bash
+python3 -m ids.watcher
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+The sample data is safe synthetic Linux activity.
+
+## MVP Capabilities
+
+- Loads local Linux IDS rules
+- Detects failed SSH login attempts
+- Detects suspicious shell command patterns
+- Detects new local user creation
+- Writes terminal output, Markdown reports, and JSON alerts
 
 ## Repository Status
 
-This repository contains the production-ready foundation for the Custom IDS Script MVP. The current codebase is scaffolded and ready for focused implementation work.
+This repository contains a working Custom IDS Script MVP with safe sample logs, deterministic rules, generated alerts, and tests.
 
 ## Production Foundation
 
@@ -29,4 +42,3 @@ This repository contains the production-ready foundation for the Custom IDS Scri
 - Pull request and issue templates
 - Production readiness checklist
 - Safe ignore rules for local secrets and generated files
-

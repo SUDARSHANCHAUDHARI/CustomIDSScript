@@ -1,2 +1,18 @@
 # Linux Rules for Custom IDS Script
-items: []
+items:
+  - id: failed-login
+    description: Repeated failed SSH authentication attempt
+    severity: medium
+    contains:
+      - "failed password"
+      - "sshd"
+  - id: suspicious-command
+    description: Suspicious shell command execution pattern
+    severity: high
+    contains:
+      - "bash -i"
+  - id: new-user
+    description: New local user was created
+    severity: high
+    contains:
+      - "new user"
