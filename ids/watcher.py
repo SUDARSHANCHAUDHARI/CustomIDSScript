@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from ids.alerts import build_json_report, build_markdown_report, format_terminal_alert
-from ids.config import DEFAULT_JSON_PATH, DEFAULT_LOG_PATH, DEFAULT_REPORT_PATH, DEFAULT_RULES_PATH
+import json
+
+from ids.alerts import build_json_report, build_markdown_report, build_triage_report, format_terminal_alert, summarize_alerts
+from ids.config import DEFAULT_JSON_PATH, DEFAULT_LOG_PATH, DEFAULT_REPORT_PATH, DEFAULT_RULES_PATH, DEFAULT_SUMMARY_PATH, DEFAULT_TRIAGE_PATH
 from ids.rules import evaluate_logs, load_rules
 
 
@@ -20,6 +22,8 @@ def main() -> None:
     parser.add_argument("--log", type=Path, default=DEFAULT_LOG_PATH)
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT_PATH)
     parser.add_argument("--json", type=Path, default=DEFAULT_JSON_PATH)
+    parser.add_argument("--summary", type=Path, default=DEFAULT_SUMMARY_PATH)
+    parser.add_argument("--triage", type=Path, default=DEFAULT_TRIAGE_PATH)
     args = parser.parse_args()
 
     alerts = evaluate_logs(load_log_lines(args.log), load_rules(args.rules))
@@ -27,6 +31,8 @@ def main() -> None:
     args.json.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(build_markdown_report(alerts), encoding="utf-8")
     args.json.write_text(build_json_report(alerts), encoding="utf-8")
+    args.summary.write_text(json.dumps(summarize_alerts(alerts), indent=2) + "\n", encoding="utf-8")
+    args.triage.write_text(build_triage_report(alerts), encoding="utf-8")
     for alert in alerts:
         print(format_terminal_alert(alert))
     print(f"Generated {len(alerts)} alert(s)")

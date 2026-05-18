@@ -39,12 +39,29 @@ The sample data is safe synthetic Linux activity.
 - Detects failed SSH login attempts
 - Detects suspicious shell command patterns
 - Detects new local user creation
-- Writes terminal output, Markdown reports, and JSON alerts
+- Adds timestamps and recommended response actions to alerts
+- Writes terminal output, Markdown reports, JSON alerts, summary JSON, and triage handoff
+
+## Demo Artifacts
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Security notes](docs/SECURITY_NOTES.md)
+- [Demo walkthrough](docs/DEMO.md)
+- [Release notes](docs/RELEASE_NOTES.md)
+- [Sample alert report](reports/alerts.md)
+- [Sample triage report](reports/triage.md)
+- [Sample summary](reports/summary.json)
+
+## Docker Demo
+
+```bash
+docker compose run --rm custom-ids-demo
+```
 
 ## Roadmap
 
-- Polish sample output screenshots or terminal demos
-- Add architecture diagram and deeper implementation notes
-- Expand test coverage around edge cases
-- Add Docker or local demo workflow where useful
-- Prepare `v0.1.0-mvp` release notes
+- Add tail-follow mode with checkpointing.
+- Add allowlist/suppression support.
+- Add Slack/webhook delivery.
+- Add richer YAML parser and rule metadata.
+- Prepare GitHub release `v0.1.0-mvp`.

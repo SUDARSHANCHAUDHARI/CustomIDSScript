@@ -1,0 +1,11 @@
+{
+  "alerts": 3,
+  "high": 2,
+  "medium": 1,
+  "rule_counts": {
+    "failed-login": 1,
+    "new-user": 1,
+    "suspicious-command": 1
+  },
+  "highest_severity": "high"
+}

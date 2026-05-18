@@ -20,6 +20,21 @@ class Alert:
     description: str
     severity: str
     evidence: str
+    timestamp: str
+    recommended_action: str
+
+
+RECOMMENDED_ACTIONS = {
+    "failed-login": "Review source IP history, rate-limit SSH, and confirm no successful login followed.",
+    "suspicious-command": "Preserve process context, isolate the host if unauthorized, and review shell history.",
+    "new-user": "Confirm the account creation was approved and disable the user if suspicious.",
+}
+
+
+def extract_timestamp(line: str) -> str:
+    """Extract a syslog-style timestamp prefix when present."""
+    parts = line.split()
+    return " ".join(parts[:3]) if len(parts) >= 3 else "unknown"
 
 
 def load_rules(path: Path) -> list[Rule]:
@@ -60,7 +75,16 @@ def evaluate_line(line: str, rules: list[Rule]) -> list[Alert]:
     alerts: list[Alert] = []
     for rule in rules:
         if all(pattern in lower for pattern in rule.contains):
-            alerts.append(Alert(rule.rule_id, rule.description, rule.severity, line))
+            alerts.append(
+                Alert(
+                    rule.rule_id,
+                    rule.description,
+                    rule.severity,
+                    line,
+                    extract_timestamp(line),
+                    RECOMMENDED_ACTIONS.get(rule.rule_id, "Review the source log line and validate with host context."),
+                )
+            )
     return alerts
 
 
