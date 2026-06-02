@@ -24,6 +24,19 @@ This project is defensive and analysis-focused. Use only with logs, systems, rep
 - new user detection
 - alert to terminal/Slack
 
+
+## Install
+
+```bash
+pip install .
+```
+
+This registers the `custom-ids` command. Or run directly:
+
+```bash
+python3 main.py --help
+```
+
 ## Quick Start
 
 ```bash
